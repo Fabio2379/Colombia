@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Álbum Selección Colombia 2026</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700;800&display=swap');
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --wine:#6B1535;
+  --col-y:#FCD116;
+  --col-b:#003087;
+  --col-r:#CE1126;
+}
+body{
+  background:var(--wine);
+  font-family:'Barlow Condensed',sans-serif;
+  min-height:100vh;
+  overflow-x:hidden;
+  background-image:
+    radial-gradient(circle at 15% 25%, rgba(180,30,70,0.4) 0%, transparent 45%),
+    radial-gradient(circle at 85% 75%, rgba(100,10,40,0.5) 0%, transparent 45%),
+    repeating-linear-gradient(45deg, rgba(0,0,0,0.04) 0, rgba(0,0,0,0.04) 1px, transparent 0, transparent 50%);
+  background-size:100% 100%, 100% 100%, 8px 8px;
+}
+
+/* TOP BAR */
+.top-bar{
+  background:rgba(0,0,0,0.35);
+  border-bottom:2px solid rgba(255,255,255,0.08);
+  padding:0 20px;
+  display:flex;align-items:center;justify-content:space-between;
+  height:52px;
+  position:sticky;top:0;z-index:50;
+}
+.top-nav-btn{
+  background:rgba(255,255,255,0.1);
+  border:1.5px solid rgba(255,255,255,0.2);
+  color:white;width:36px;height:36px;border-radius:50%;
+  font-size:20px;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:all 0.2s;line-height:1;
+}
+.top-nav-btn:hover{background:rgba(255,255,255,0.2);}
+.top-bar-title{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:18px;letter-spacing:3px;color:white;
+  background:rgba(0,0,0,0.4);
+  padding:6px 20px;border-radius:20px;
+}
+
+/* ALBUM OUTER */
+.album-outer{padding:20px 16px 30px;max-width:820px;margin:0 auto;}
+
+/* SINGLE PAGE */
+.page{
+  background:white;
+  border-radius:10px;
+  overflow:hidden;
+  box-shadow:0 20px 60px rgba(0,0,0,0.6);
+  position:relative;
+  min-height:520px;
+  padding:24px 22px 22px;
+}
+
+/* Color blobs */
+.blob-y{position:absolute;bottom:-60px;left:-50px;width:340px;height:340px;background:var(--col-y);border-radius:50%;opacity:0.8;z-index:0;pointer-events:none;}
+.blob-b{position:absolute;top:-80px;right:-60px;width:280px;height:280px;background:var(--col-b);border-radius:50%;opacity:0.85;z-index:0;pointer-events:none;}
+.blob-r{position:absolute;top:35%;left:30%;width:220px;height:220px;background:var(--col-r);border-radius:50%;opacity:0.35;z-index:0;pointer-events:none;}
+.big-num{
+  position:absolute;bottom:-30px;right:-20px;
+  font-family:'Bebas Neue',sans-serif;font-size:320px;
+  color:rgba(255,255,255,0.08);line-height:1;z-index:1;
+  pointer-events:none;letter-spacing:-10px;user-select:none;
+}
+
+/* PAGE HEADER */
+.page-header{
+  position:relative;z-index:2;
+  display:flex;align-items:flex-end;justify-content:space-between;
+  margin-bottom:20px;
+  flex-wrap:wrap;gap:12px;
+}
+.page-header-left{}
+.we-are{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:3px;color:var(--col-y);line-height:1;}
+.team-name{font-family:'Bebas Neue',sans-serif;font-size:40px;letter-spacing:4px;color:var(--col-b);line-height:1;}
+.fed-badge{display:flex;align-items:center;gap:8px;margin-top:8px;}
+.fed-flag{width:38px;height:24px;border-radius:3px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 1px 4px rgba(0,0,0,0.3);flex-shrink:0;}
+.fed-flag div{flex:1;}
+.fy{background:#FCD116;}.fb{background:#003087;}.fr{background:#CE1126;}
+.fed-text{font-size:10px;font-weight:700;color:#333;line-height:1.3;}
+
+.page-header-right{}
+.group-box{
+  background:#1a1a2e;border-radius:10px;padding:10px 14px;
+}
+.group-title{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:3px;color:white;margin-bottom:8px;}
+.group-flags{display:grid;grid-template-columns:1fr 1fr;gap:5px;}
+.gf-item{background:rgba(255,255,255,0.08);border-radius:5px;padding:4px 7px;display:flex;align-items:center;gap:5px;}
+.gf-code{font-size:9px;font-weight:800;letter-spacing:1px;color:rgba(255,255,255,0.7);writing-mode:vertical-rl;text-orientation:mixed;transform:rotate(180deg);}
+.gf-flag{width:38px;height:24px;border-radius:2px;flex-shrink:0;}
+.flag-por{background:linear-gradient(to right,#006600 40%,#FF0000 40%);}
+.flag-cod{background:linear-gradient(to right,#007FFF 33%,#FFCD00 33%,#FFCD00 66%,#CE1126 66%);}
+.flag-uzb{background:linear-gradient(to bottom,#1EB53A 33%,white 33%,white 66%,#CE1126 66%);}
+.flag-col{display:flex;flex-direction:column;}
+.flag-col div:nth-child(1){flex:2;background:#FCD116;}
+.flag-col div:nth-child(2){flex:1;background:#003087;}
+.flag-col div:nth-child(3){flex:1;background:#CE1126;}
+
+/* STICKERS GRID */
+.stickers-grid{
+  position:relative;z-index:2;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+}
+
+/* SLOT */
+.slot{
+  background:#f5e8c0;
+  border-radius:10px;
+  padding:7px 6px 7px;
+  display:flex;flex-direction:column;align-items:center;
+  position:relative;overflow:hidden;
+  min-height:150px;
+  cursor:pointer;
+  transition:transform 0.15s, box-shadow 0.15s;
+  border:2.5px solid var(--col-y);
+  box-shadow:0 3px 12px rgba(0,0,0,0.15);
+}
+.slot:hover{
+  transform:scale(1.05) rotate(-2deg);
+  box-shadow:0 10px 28px rgba(0,0,0,0.28);
+  z-index:10;
+}
+.slot-num{
+  font-family:'Bebas Neue',sans-serif;font-size:11px;letter-spacing:1px;
+  color:#222;background:var(--col-y);
+  padding:2px 7px;border-radius:4px;margin-bottom:5px;align-self:flex-start;
+}
+.slot-img-wrap{
+  width:100%;height:100px;border-radius:6px;overflow:hidden;
+  background:#d4c5a0;display:flex;align-items:center;justify-content:center;flex:1;
+}
+.slot-img-wrap img{width:100%;height:100%;object-fit:cover;object-position:top;display:block;}
+.slot-empty-icon{font-size:28px;opacity:0.22;}
+.slot-name{
+  font-size:9px;font-weight:800;letter-spacing:0.5px;
+  color:#333;text-transform:uppercase;text-align:center;
+  margin-top:5px;line-height:1.2;
+}
+.slot-name span{font-weight:400;display:block;font-size:8px;color:#666;}
+
+/* PROGRESS - TU DISEÑO ORIGINAL EXACTO DE LA IMAGEN */
+.progress-wrap{
+  position:relative;z-index:2;margin-top:16px;
+  display:flex;align-items:center;gap:10px;
+}
+.progress-label{font-size:11px;letter-spacing:1px;color:rgba(0,0,0,0.4);font-weight:700;white-space:nowrap;}
+.progress-bar-outer{flex:1;height:6px;background:rgba(0,0,0,0.1);border-radius:3px;overflow:hidden;}
+.progress-bar-fill{height:100%;background:linear-gradient(to right,var(--col-y),var(--col-r));border-radius:3px;width:0%; transition: width 0.3s ease;}
+.progress-count{font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:1px;color:rgba(0,0,0,0.4);white-space:nowrap;}
+
+/* PAGINATION */
+.pagination{
+  display:flex;align-items:center;justify-content:center;gap:0;
+  margin:18px auto 0;
+  background:rgba(0,0,0,0.5);border-radius:30px;overflow:hidden;
+  width:fit-content;box-shadow:0 4px 16px rgba(0,0,0,0.4);
+}
+.pag-btn{
+  background:transparent;border:none;color:white;font-size:22px;
+  width:50px;height:46px;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;transition:background 0.15s;
+}
+.pag-btn:hover{background:rgba(255,255,255,0.12);}
+.pag-label{
+  font-family:'Bebas Neue',sans-serif;font-size:16px;
+  letter-spacing:3px;color:white;padding:0 22px;
+  border-left:1px solid rgba(255,255,255,0.15);
+  border-right:1px solid rgba(255,255,255,0.15);
+  line-height:46px;
+}
+
+/* MODAL */
+.modal-overlay{
+  position:fixed;inset:0;background:rgba(50,10,25,0.85);
+  z-index:1000;display:flex;align-items:center;justify-content:center;
+  opacity:0;pointer-events:none;transition:opacity 0.2s;
+  padding:20px;
+  -webkit-backdrop-filter:blur(8px);
+  backdrop-filter:blur(8px);
+}
+.modal-overlay.open{opacity:1;pointer-events:all;}
+.modal-inner{
+  display:flex;align-items:center;gap:24px;max-width:620px;width:100%;
+  transform:scale(0.9) translateY(24px);
+  transition:transform 0.28s cubic-bezier(0.34,1.56,0.64,1);
+}
+.modal-overlay.open .modal-inner{transform:scale(1) translateY(0);}
+.modal-sticker{
+  width:220px;flex-shrink:0;
+  transform:rotate(-6deg);
+  border-radius:12px;
+  box-shadow:0 24px 56px rgba(0,0,0,0.75);
+}
+.modal-sticker img{width:100%;height:auto;display:block;border-radius:12px;}
+.modal-info{
+  flex:1;background:white;border-radius:16px;
+  padding:22px 24px;position:relative;
+}
+.modal-btns{position:absolute;top:12px;right:12px;display:flex;gap:6px;}
+.modal-icon-btn{
+  width:32px;height:32px;border-radius:50%;
+  border:2px solid #e0e0e0;background:white;
+  font-size:15px;cursor:pointer;color:#555;
+  display:flex;align-items:center;justify-content:center;transition:all 0.15s;
+}
+.modal-icon-btn:hover{background:#f5f5f5;border-color:#bbb;}
+.modal-player-name{
+  font-family:'Bebas Neue',sans-serif;font-size:28px;
+  letter-spacing:2px;color:#111;line-height:1;
+  margin-bottom:16px;padding-right:40px;
+}
+.modal-player-name span{color:var(--col-b);}
+.modal-row{
+  display:flex;justify-content:space-between;align-items:baseline;
+  padding:8px 0;border-bottom:0.5px solid #eee;font-size:15px;
+}
+.modal-row:last-of-type{border-bottom:none;}
+.modal-row-label{color:#888;}
+.modal-row-val{color:#111;font-weight:700;}
+.modal-hist-btn{
+  margin-top:16px;width:100%;border:2.5px solid #111;
+  background:transparent;font-family:'Bebas Neue',sans-serif;
+  font-size:17px;letter-spacing:2px;color:#111;
+  padding:11px;border-radius:30px;cursor:pointer;transition:all 0.2s;
+}
+.modal-hist-btn:hover{background:#111;color:white;}
+
+@media(max-width:550px){
+  .page-header{flex-direction:column;align-items:flex-start;}
+  .team-name{font-size:30px;}
+  .modal-inner{flex-direction:column;align-items:center;}
+  .modal-sticker{width:160px;transform:rotate(-4deg);}
+  .modal-sticker img{height:auto;}
+  .stickers-grid{grid-template-columns:repeat(3,1fr);gap:8px;}
+}
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <button class="top-nav-btn" onclick="changePage(-1)">&#8249;</button>
+  <div class="top-bar-title">SELECCIÓN COLOMBIA 2026</div>
+  <button class="top-nav-btn" onclick="changePage(1)">&#8250;</button>
+</div>
+
+<div class="album-outer">
+  <div class="page" id="thePage">
+    <div class="blob-y"></div>
+    <div class="blob-b"></div>
+    <div class="blob-r"></div>
+    <div class="big-num">26</div>
+
+    <div class="page-header">
+      <div class="page-header-left">
+        <div class="we-are">SOMOS</div>
+        <div class="team-name">COLOMBIA</div>
+        <div class="fed-badge">
+          <div class="fed-flag"><div class="fy"></div><div class="fb"></div><div class="fr"></div></div>
+          <div class="fed-text">Federación<br>Colombiana<br>de Fútbol</div>
+        </div>
+      </div>
+      <div class="page-header-right">
+        <div class="group-box">
+          <div class="group-title">GROUP K</div>
+          <div class="group-flags">
+            <div class="gf-item"><div class="gf-code">POR</div><div class="gf-flag flag-por"></div></div>
+            <div class="gf-item"><div class="gf-code">COD</div><div class="gf-flag flag-cod"></div></div>
+            <div class="gf-item"><div class="gf-code">UZB</div><div class="gf-flag flag-uzb"></div></div>
+            <div class="gf-item"><div class="gf-code">COL</div><div class="gf-flag flag-col"><div></div><div></div><div></div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stickers-grid" id="stickersGrid"></div>
+
+    <div class="progress-wrap">
+      <div class="progress-label">LÁMINAS EN EL ÁLBUM</div>
+      <div class="progress-bar-outer">
+        <div class="progress-bar-fill" id="progFill"></div>
+      </div>
+      <div class="progress-count" id="progCount">0/54</div>
+    </div>
+  </div>
+
+  <div class="pagination">
+    <button class="pag-btn" onclick="changePage(-1)">&#8249;</button>
+    <div class="pag-label" id="pagLabel">PÁGINA 1</div>
+    <button class="pag-btn" onclick="changePage(1)">&#8250;</button>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modalOverlay" onclick="handleOverlayClick(event)">
+  <div class="modal-inner">
+    <div class="modal-sticker"><img id="modalImg" src="" alt=""></div>
+    <div class="modal-info">
+      <div class="modal-btns">
+        <button class="modal-icon-btn" onclick="closeModal()">&#10005;</button>
+      </div>
+      <div class="modal-player-name" id="modalName"></div>
+      <div id="modalRows"></div>
+      <button class="modal-hist-btn">2 CROMOS HISTÓRICOS</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const PER_PAGE = 6;
+let currentPage = 0;
+
+// RELLENA AQUÍ LOS DATOS DE TUS 30 JUGADORES
+const players = [
+  { id: 41, name: "Daniel Alejandro", surname: "Rios", pos: "Portero", born: "30-1-1998", height: "1.78 m", weight: "70 kg", club: "América de Cali (COL)", img: "img/Daniel-Rios.jpg" },
+  { id: 8, name: "Yesenia", surname: "Gomez Correa", pos: "Portero", born: "15-11-1987", height: "1.70 m", weight: "66 kg", club: "Atlético Nacional (COL)", img: "img/Yesenia-Gomez.png" },
+  { id: 21, name: "Oscar", surname: "López Quirós", pos: "Portero", born: "31-12-1990", height: "1.73 m", weight: "87 kg", club: "Atlético Nacional (COL)", img: "img/Oscar-Lopez.png" },
+  { id: 16, name: "Sara", surname: "García Lizarazo", pos: "Portero", born: "31-08-1988", height: "1.83 m", weight: "80 kg", club: "Atlético Nacional (COL)", img: "" },
+  { id: 15, name: "Gustavo", surname: "Escobar", pos: "Portero", born: "31-08-1988", height: "1.83 m", weight: "80 kg", club: "Atlético Nacional (COL)", img: "" },   
+  
+  { id: 33, name: "Victoria", surname: "Gomez Correa", pos: "Defensa Central", born: "9-12-1989", height: "1.67 m", weight: "75 kg", club: "Atlético Nacional (COL)", img: "img/Victoria-Gomez.png" },
+  { id: 3, name: "Cristian", surname: "Oquendo", pos: "Defensa Central", born: "4-13-1989", height: "1.56 m", weight: "80 kg", club: "Deportivo Independiente Medellín (COL)", img: "img/Cristian-Oquendo.jpg" },
+  { id: 28, name: "Yeris Leonela", surname: "Gómez Ortíz", pos: "Defensa Central", born: "16-5-2000", height: "1.53 m", weight: "65 kg", club: "Atlético Nacional (COL)", img: "img/Leonela-Gomez.png" },
+  { id: 42, name: "Dora", surname: "Castrillón", pos: "Defensa Central", born: "28-3-1972", height: "1.56 m", weight: "65 kg", club: "Deportivo Independiente Medellín (COL)", img: "img/Dora-Castrillon.png" },
+  { id: 19, name: "Bladimir", surname: "Arizal Licona", pos: "Defensa Central", born: "3-11-1990", height: "1.60 m", weight: "70 kg", club: "América de Cali (COL)", img: "img/Bladimir-Arizal.png" },
+  { id: 47, name: "Jhon Fredy", surname: "Montoya", pos: "Defensa Central", born: "02-06-2000", height: "1.85 m", weight: "78 kg", club: "Atlético Nacional (COL)", img: "" },
+  { id: 4, name: "Efraim", surname: "Ruiz Calderon", pos: "Defensa Central", born: "31-08-1988", height: "1.83 m", weight: "80 kg", club: "Atlético Nacional (COL)", img: "" },
+  { id: 46, name: "Elvis", surname: "Guerrero", pos: "Defensa Central", born: "9-4-1988", height: "1.65 m", weight: "73 kg", club: "Real Madrid CF (ESP)", img: "img/Elvis-Guerrero.png" },
+  
+  { id: 2, name: "Valentina", surname: "Velez Bedoya", pos: "Lateral Derecho", born: "20-04-1999", height: "1.75 m", weight: "73 kg", club: "Atlético Nacional (COL)", img: "" },
+  { id: 26, name: "Eduar Adrian", surname: "Gallego Cuadros", pos: "Lateral Derecho", born: "31-08-1988", height: "1.83 m", weight: "80 kg", club: "Atlético Nacional (COL)", img: "" },
+  { id: 18, name: "Elvis", surname: "García Jaramilo", pos: "Lateral Derecho", born: "29-8-1984", height: "1.80 m", weight: "76 kg", club: "Atlético Nacional (COL)", img: "img/Elvis-Garcia.png" },
+  { id: 13, name: "Daniel", surname: "Salinas", pos: "Lateral Derecho", born: "20-04-1999", height: "1.75 m", weight: "73 kg", club: "Atlético Nacional (COL)", img: "" },
+  { id: 40, name: "Claudio Samir", surname: "Padilla", pos: "Lateral Derecho", born: "20-04-1999", height: "1.75 m", weight: "73 kg", club: "Atlético Nacional (COL)", img: "" },
+  
+  { id: 7, name: "Sebastian", surname: "Cuenca Alvarez", pos: "Lateral Izquierdo", born: "21-08-1992", height: "1.85 m", weight: "79 kg", club: "Mallorca (ESP)", img: "" },
+  { id: 27, name: "Natalia", surname: "Gallego Eusse", pos: "Lateral Izquierdo", born: "3-10-1981", height: "1.60 m", weight: "70 kg", club: "Atlético Nacional (COL)", img: "img/Natalia-Gallego.png" },
+  { id: 34, name: "Juan Dario", surname: "García", pos: "Lateral Izquierdo", born: "26-06-1955", height: "1.75 m", weight: "75 kg", club: "Millonarios FC (COL)", img: "img/Juan-Dario-Garcia.png" },
+  { id: 45, name: "Andres", surname: "Pacheco", pos: "Lateral Izquierdo", born: "21-08-1992", height: "1.85 m", weight: "79 kg", club: "Mallorca (ESP)", img: "" },
+  { id: 37, name: "Oscar David", surname: "García Miranda", pos: "Lateral Izquierdo", born: "21-08-1992", height: "1.85 m", weight: "79 kg", club: "Mallorca (ESP)", img: "" },
+  
+  { id: 22, name: "Yeison", surname: "Quintana Ortega", pos: "Volante de Marca", born: "9-8-1982", height: "1.70 m", weight: "78 kg", club: "Atlético Bucaramanga (COL)", img: "img/Yeison-Quintana.png" },
+  { id: 6, name: "Claudia", surname: "Hernández Marín", pos: "Volante de Marca", born: "12-6-1979", height: "1.50 m", weight: "62 kg", club: "Atlético Nacional (COL)", img: "img/Claudia-Hernandez.png" },
+  { id: 17, name: "Fabio Antonio", surname: "Guerrero", pos: "Volante de Marca", born: "23-11-1979", height: "1.65 m", weight: "70 kg", club: "Bayern München (GER)", img: "img/Fabio-Guerrero.png" },
+  { id: 10, name: "Catalina", surname: "Ceballos Gallego", pos: "Volante de Marca", born: "21-9-2000", height: "1.63 m", weight: "63 kg", club: "Bayern München (GER)", img: "img/Catalina-Ceballos.png" },
+  { id: 9, name: "Andres", surname: "Londoño", pos: "Volante de Marca", born: "17-11-1982", height: "1.74 m", weight: "79 kg", club: "FC Barcelona (ESP)", img: "img/Andres-Londoño.png" },
+  
+  { id: 30, name: "Jhon Jairo", surname: "González", pos: "Volante Mixto", born: "26-8-1988", height: "1.70 m", weight: "110 kg", club: "Junior de Barranquilla (COL)", img: "" },
+  { id: 29, name: "Cristina", surname: "Muñoz Ramirez", pos: "Volante Mixto", born: "30-8-1988", height: "1.58 m", weight: "62 kg", club: "Real Madrid CF (ESP)", img: "img/Cristina-Muñoz.png" },
+  { id: 32, name: "Juan Gabriel", surname: "Alvarez", pos: "Volante Mixto", born: "16-6-1977", height: "1.67 m", weight: "63 kg", club: "Atlético Nacional (COL)", img: "img/Juan-Gabriel-Alvarez.png" },
+  { id: 36, name: "Alejandra", surname: "Correa Sanchez", pos: "Volante Mixto", born: "18-9-1986", height: "1.65 m", weight: "65 kg", club: "Atlético Nacional (COL)", img: "img/Alejandra-Correa.png" },
+  { id: 24, name: "Edgar Gonzalo", surname: "Zapata Cardona", pos: "Volante Mixto", born: "23-09-1994", height: "1.95 m", weight: "94 kg", club: "Cagliari (ITA)", img: "" },
+  
+  { id: 23, name: "Juan Diego", surname: "Tavera", pos: "Volante de Creación", born: "17-06-1999", height: "1.73 m", weight: "71 kg", club: "Deportivo Independiente Medellín (COL)", img: "" },
+  { id: 20, name: "Alejandro", surname: "Martínez Tobón", pos: "Volante de Creación", born: "11-05-1993", height: "1.88 m", weight: "85 kg", club: "Atlético Nacional (COL)", img: "" },
+  { id: 5, name: "Juan Pablo", surname: "Villegas", pos: "Volante de Creación", born: "21-4-1995", height: "1.74 m", weight: "80 kg", club: "Deportes Tolima (COL)", img: "img/Juan-Pablo-Villegas.jpg"},
+  { id: 35, name: "Jorge", surname: "Quiceno", pos: "Portero", born: "31-08-1988", height: "1.83 m", weight: "80 kg", club: "Atlético Nacional (COL)", img: "" },
+  { id: 49, name: "Sebastian", surname: "Vega Mestra", pos: "Volante de Creación", born: "4-9-2002", height: "1.85 m", weight: "94 kg", club: "Real Madrid CF (ESP)", img: "img/Sebastian-Vega.png" },
+  
+  { id: 1, name: "Maria Camila", surname: "Peñaranda", pos: "Delantero Centro", born: "25-12-2005", height: "1.54 m", weight: "52 kg", club: "Bayern München (GER)", img: "img/Maria-Camila.png"},
+  { id: 43, name: "Mateo", surname: "Montoya", pos: "Delantero Centro", born: "22-8-2000", height: "1.80 m", weight: "88 kg", club: "FC Barcelona (ESP)", img: "img/Mateo-Montoya.jpg" },
+  { id: 48, name: "Michelle", surname: "Galeano Urrego", pos: "Delantero Centro", born: "31-08-1988", height: "1.83 m", weight: "80 kg", club: "Atlético Nacional (COL)", img: "" },
+  { id: 39, name: "Rafa", surname: "Builes", pos: "Delantero Centro", born: "31-08-1988", height: "1.83 m", weight: "80 kg", club: "Atlético Nacional (COL)", img: "" },
+  { id: 11, name: "Estefania", surname: "Hernández", pos: "Delantero Centro", born: "31-08-1988", height: "1.83 m", weight: "80 kg", club: "Atlético Nacional (COL)", img: "" },
+  
+  { id: 25, name: "Daniel", surname: "Timana", pos: "Delantero Extremo Derecho", born: "25-05-1998", height: "1.74 m", weight: "67 kg", club: "Dinamo Moscú (RUS)", img: "" },
+  { id: 51, name: "Isabel", surname: "Mejia", pos: "Delantero Extremo Derecho", born: "31-08-1988", height: "1.83 m", weight: "80 kg", club: "Atlético Nacional (COL)", img: "" },
+  { id: 44, name: "Uber", surname: "Hernández", pos: "Delantero Extremo Derecho", born: "5-6-1989", height: "1.68 m", weight: "70 kg", club: "Atlético Nacional (COL)", img: "img/Uber-Hernandez.png" },
+  { id: 12, name: "Andres Felipe", surname: "Cifuentes", pos: "Delantero Extremo Derecho", born: "31-08-1988", height: "1.83 m", weight: "80 kg", club: "Atlético de Madrid (ESP)", img: "" },
+    
+  { id: 31, name: "Edison", surname: "Alvarez", pos: "Delantero Extremo Izquierdo", born: "31-08-1988", height: "1.83 m", weight: "80 kg", club: "Atlético Nacional (COL)", img: "" },
+  { id: 14, name: "Bibiana", surname: "Tejada Zuluaga", pos: "Delantero Extremo Izquierdo", born: "22-8-1984", height: "1.60 m", weight: "65 kg", club: "Atlético Nacional (COL)", img: "img/Bibiana-Tejada.png" },  
+  { id: 50, name: "Ricardo", surname: "Correa Sanchez", pos: "Delantero Extremo Izquierdo", born: "13-8-1993", height: "1.68 m", weight: "80 kg", club: "Atlético Nacional (COL)", img: "" },
+  { id: 38, name: "Daniel Esteban", surname: "Agudelo Duque", pos: "Delantero Extremo Izquierdo", born: "13-8-1993", height: "1.68 m", weight: "80 kg", club: "Atlético Nacional (COL)", img: "" }
+  
+ ] 
+
+function updateProgress() {
+  const totalStickers = 54; // Fijado exactamente a tus 40jugadores
+  const filledStickers = players.filter(function(p) { 
+    return p.img && p.img.trim() !== ""; 
+  }).length;
+  
+  const percentage = (filledStickers / totalStickers) * 100;
+  
+  document.getElementById('progCount').innerText = `${filledStickers}/${totalStickers}`;
+  document.getElementById('progFill').style.width = `${percentage}%`;
+}
+
+function render() {
+  const grid = document.getElementById('stickersGrid');
+  if (!grid) return;
+  grid.innerHTML = '';
+
+  const start = currentPage * PER_PAGE;
+  for (let i = 0; i < PER_PAGE; i++) {
+    const slotIdx = start + i;
+    const slotNum = slotIdx + 1;
+
+    if (slotNum > 54) break;
+
+    const pl = players.filter(function(p) { return p.id === slotNum; })[0];
+
+    const slotDiv = document.createElement('div');
+    slotDiv.className = 'slot';
+    
+    if (pl) {
+      slotDiv.onclick = (function(playerData) {
+        return function() { openModal(playerData); };
+      })(pl);
+
+      let imageHtml = '<div class="slot-empty-icon">&#128100;</div>';
+      if (pl.img) {
+        imageHtml = `<img src="${pl.img}" alt="">`;
+      }
+
+      slotDiv.innerHTML = `
+        <div class="slot-num">${slotNum}</div>
+        <div class="slot-img-wrap">${imageHtml}</div>
+        <div class="slot-name">${pl.name} <span>${pl.surname}</span></div>
+      `;
+    }
+    grid.appendChild(slotDiv);
+  }
+
+  const label = document.getElementById('pagLabel');
+  if (label) label.innerText = `PÁGINA ${currentPage + 1}`;
+  
+  // Ejecuta la actualización de la barra cada vez que se renderiza
+  updateProgress();
+}
+
+function changePage(dir) {
+  currentPage += dir;
+  if (currentPage < 0) currentPage = 0;
+  if (currentPage > 8) currentPage = 8; // Límite exacto para 5 páginas
+  render();
+}
+
+function openModal(pl) {
+  const overlay = document.getElementById('modalOverlay');
+  const mImg = document.getElementById('modalImg');
+  const mName = document.getElementById('modalName');
+  const mRows = document.getElementById('modalRows');
+
+  if (!overlay || !mImg || !mName || !mRows) return;
+
+  if (pl.img) {
+    mImg.src = pl.img;
+    mImg.style.display = 'block';
+  } else {
+    mImg.src = '';
+    mImg.style.display = 'none';
+  }
+
+  mName.innerHTML = `${pl.name} <span>${pl.surname}</span>`;
+
+  mRows.innerHTML = `
+    <div class="modal-row"><div class="modal-row-label">Fecha de nacimiento</div><div class="modal-row-val">${pl.born || '-'}</div></div>
+    <div class="modal-row"><div class="modal-row-label">Altura</div><div class="modal-row-val">${pl.height || '-'}</div></div>
+    <div class="modal-row"><div class="modal-row-label">Peso</div><div class="modal-row-val">${pl.weight || '-'}</div></div>
+    <div class="modal-row"><div class="modal-row-label">Posición</div><div class="modal-row-val">${pl.pos || '-'}</div></div>
+    <div class="modal-row"><div class="modal-row-label">Club</div><div class="modal-row-val">${pl.club || '-'}</div></div>
+  `;
+
+  overlay.classList.add('open');
+}
+
+function closeModal() {
+  const overlay = document.getElementById('modalOverlay');
+  if (overlay) overlay.classList.remove('open');
+}
+
+function handleOverlayClick(e) {
+  if (e.target.id === 'modalOverlay') closeModal();
+}
+
+window.onload = render;
+</script>
+</body>
+</html>
